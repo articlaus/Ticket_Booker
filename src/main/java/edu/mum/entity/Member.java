@@ -28,7 +28,7 @@ public class Member {
     private Integer memberNumber;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "member_id")
     UserCredentials userCredentials;
 
 
