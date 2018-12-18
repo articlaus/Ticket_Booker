@@ -2,7 +2,6 @@ package edu.mum.dao;
 
 import edu.mum.entity.UserCredentials;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unchecked")
 @Repository
-@Component
 public interface UserCredentialsDAO extends CrudRepository<UserCredentials, String> {
 
     UserCredentials findByUsername(String username);

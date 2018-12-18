@@ -16,6 +16,7 @@ public class UserCredentials {
     String username;
     @Column(nullable = false)
     String password;
+    @Transient
     String verifyPassword;
     Boolean enabled;
 
