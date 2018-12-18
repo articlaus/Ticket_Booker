@@ -28,8 +28,8 @@ public class Member {
     private Integer memberNumber;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "member_id")
-    User user;
+    @JoinColumn(name = "id")
+    UserCredentials userCredentials;
 
 
     public long getId() {
@@ -81,11 +81,11 @@ public class Member {
         return age;
     }
 
-    public User getUser() {
-        return user;
+    public UserCredentials getUserCredentials() {
+        return userCredentials;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserCredentials(UserCredentials userCredentials) {
+        this.userCredentials = userCredentials;
     }
 }
