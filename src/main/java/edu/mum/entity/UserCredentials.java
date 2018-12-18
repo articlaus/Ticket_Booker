@@ -25,7 +25,7 @@ public class UserCredentials {
 
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "credentials_id")
+    @JoinColumn(name = "username")
     List<Authority> authority = new ArrayList<Authority>();
 
     public String getUsername() {

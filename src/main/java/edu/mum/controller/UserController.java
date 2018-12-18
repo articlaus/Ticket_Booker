@@ -14,15 +14,14 @@ import org.springframework.web.bind.annotation.*;
  */
 @Controller
 @SessionAttributes("user")
-//@RequestMapping("/user")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     UserService userService;
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String getUser(Model model, @RequestParam("name") String userName) {
-        model.addAttribute("user", userService.getUser(userName));
+    public String getUser(Model model) {
         return "user";
     }
 

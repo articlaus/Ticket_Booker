@@ -35,6 +35,6 @@ public class LoginController {
             return "login";
 
         model.addAttribute("user", validCredentials.getMember());
-        return "redirect:/user";
+        return "redirect:/user/user";
     }
 }

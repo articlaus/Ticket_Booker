@@ -13,7 +13,7 @@
     <div class="jumbotron">
         <div class="container">
             <h1>Control Panel</h1>
-            <p>Dear ${member.username}, Welcome to your Personal Space</p>
+            <p>Dear ${user.userCredentials.username}, Welcome to your Personal Space</p>
         </div>
         <a href="<spring:url value="/user/reset" />" class="btn btn-danger btn-mini pull-right">Reset Pass</a>
         <br>
@@ -25,11 +25,11 @@
         <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
             <div class="thumbnail">
                 <div class="caption">
-                    <h3>First Name - ${member.firstName}</h3>
-                    <h3>Last Name - ${member.lastName}</h3>
-                    <p>Age - ${member.age}</p>
-                    <p>Title - ${member.title} </p>
-                    <p>NUMBER - ${member.memberNumber} </p>
+                    <h3>First Name - ${user.firstName}</h3>
+                    <h3>Last Name - ${user.lastName}</h3>
+                    <p>Age - ${user.age}</p>
+                    <p>Title - ${user.title} </p>
+                    <p>NUMBER - ${user.memberNumber} </p>
                 </div>
             </div>
         </div>
