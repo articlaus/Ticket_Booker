@@ -16,6 +16,7 @@
             <p>Dear ${user.userCredentials.username}, Welcome to your Personal Space</p>
         </div>
         <a href="<spring:url value="/user/reset" />" class="btn btn-danger btn-mini pull-right">Reset Pass</a>
+        <a href="<spring:url value="/flights" />" class="btn btn-info btn-mini pull-right">Book Flight</a>
         <br>
     </div>
 </section>

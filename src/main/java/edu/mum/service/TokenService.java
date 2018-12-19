@@ -2,7 +2,10 @@ package edu.mum.service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
+import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import edu.mum.dao.UserCredentialsDAO;
 import edu.mum.entity.Authority;
 import edu.mum.entity.UserCredentials;
@@ -38,5 +41,23 @@ public class TokenService {
             }
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
+
+    public ResponseEntity checkToken(String token) {
+        DecodedJWT jwt = JWT.decode(token);
+        UserCredentials userCredentials = userCredentialsDAO.findByUsername(jwt.getSubject());
+        if (userCredentials != null) {
+            try {
+                Algorithm algorithm = Algorithm.HMAC256(userCredentials.getPassword());
+                JWTVerifier verifier = JWT.require(algorithm)
+                        .withIssuer("Ticket").build();
+                jwt = verifier.verify(token);
+                return ResponseEntity.ok().build();
+            } catch (JWTVerificationException ex) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+
     }
 }
