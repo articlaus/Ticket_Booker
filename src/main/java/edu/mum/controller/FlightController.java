@@ -26,7 +26,7 @@ public class FlightController {
     }
 
     @RequestMapping(value = "/flights/{id}", method = RequestMethod.GET)
-    public ResponseEntity getFlights(@PathVariable("id") Long id) {
-        return flightService.getFlight(id);
+    public ResponseEntity bookFlight(@PathVariable("id") Long id) {
+        return flightService.bookFlight(id);
     }
 }

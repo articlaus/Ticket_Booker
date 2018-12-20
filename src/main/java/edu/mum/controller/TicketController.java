@@ -1,31 +1,31 @@
 package edu.mum.controller;
 
-import edu.mum.amqp.TicketServiceImpl;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.GenericXmlApplicationContext;
+import edu.mum.entity.Member;
+import edu.mum.entity.UserCredentials;
+import edu.mum.service.TicketService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-@RestController
-@RequestMapping("/ticket")
+/**
+ * Created by: Ganbat Bayar
+ * On: 12/19/2018
+ * Project: Ticket_Booker
+ */
+@Controller
+@SessionAttributes("user")
 public class TicketController {
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String createTicket() {
+    @Autowired
+    TicketService ticketService;
 
-        System.out.println("Ticket AMQP...");
-        ApplicationContext context = new GenericXmlApplicationContext(
-                "classpath:context/ticket-app-context.xml");
-
-        RabbitTemplate topicTemplate = context.getBean("directTemplate", RabbitTemplate.class);
-        TicketServiceImpl ticketService = new TicketServiceImpl();
-        ticketService.publish(topicTemplate);
-
-        System.out.println("Ticket has sent to AMQP.");
-
-        return "ticketlist";
+    @RequestMapping(value = "/user/tickets", method = RequestMethod.GET)
+    public String getTickets(@ModelAttribute(value = "user") Member member, Model model) {
+        model.addAttribute("tickets", ticketService.getTickets(member.getId()));
+        return "tickets";
     }
-
 }

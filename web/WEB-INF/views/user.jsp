@@ -17,6 +17,7 @@
         </div>
         <a href="<spring:url value="/user/reset" />" class="btn btn-danger btn-mini pull-right">Reset Pass</a>
         <a href="<spring:url value="/flights" />" class="btn btn-info btn-mini pull-right">Book Flight</a>
+        <a href="<spring:url value="/user/tickets" />" class="btn btn-info btn-mini pull-right">Bought Tickets</a>
         <br>
     </div>
 </section>

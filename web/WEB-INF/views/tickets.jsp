@@ -13,16 +13,14 @@
 
 <section class="container">
     <div class="row">
-        <c:forEach items="${flights}" var="flight">
+        <c:forEach items="${tickets}" var="ticket">
             <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
                 <div class="thumbnail">
                     <div class="caption">
-                        <h4>Flight Number - ${flight.flightNumber}</h4>
-                        <h4>From - ${flight.fromAirport.name}
-                            <h4>To - ${flight.toAirport.name}
-                                <a href="<spring:url value="/flights/${flight.id}" />"
-                                   class="btn btn-primary  btn-mini  ">Book Flight</a>
-                            </h4>
+                        <h4>Flight Number - ${ticket.flight.flightNumber}</h4>
+                        <h4>From - ${ticket.flight.fromAirport.name}</h4>
+                        <h4>To - ${ticket.flight.toAirport.name}</h4>
+                        <h4>Bought Date - ${ticket.issueDate}</h4>
                     </div>
                 </div>
             </div>
